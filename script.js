@@ -34,7 +34,8 @@ const displayPhoneData = (phones) =>{
         </div>
         `;
         phonesContainer.appendChild(phoneDiv);
-    })
+    });
+    loader(false);
 }
 
 
@@ -110,11 +111,26 @@ const displayPhoneDetails = (phoneDetails) =>{
 const searchPhone = () =>{
     const searchField = document.getElementById("search-text-field");
     const searchText = searchField.value;
-    loadPhoneData(searchText);
+
+    loader(true);
+    if(searchText === ''){
+        alert("Plese give some input");
+        loader(false);
+    };
+    if(searchText !== '') loadPhoneData(searchText);
     
     searchField.value = '';
 }
 
+
+
+// Loading function
+const loader = (isLoading) =>{
+    const loader = document.getElementById("loader");
+
+    if(!isLoading) loader.classList.add("hidden"); 
+    if(isLoading) loader.classList.remove("hidden"); 
+}
 
 
 loadPhoneData("13");
