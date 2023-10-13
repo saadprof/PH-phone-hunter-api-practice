@@ -6,13 +6,19 @@ const loadPhoneData = async (searchText) =>{
     displayPhoneData(phones);
 }
 
-
 //  Display Data
 const displayPhoneData = (phones) =>{
     // console.log(phones);
     
     const phonesContainer = document.getElementById("phone-cards-container");
     phonesContainer.innerHTML = '';
+
+    
+    // Part of show more button function
+    const showMoreBtn = document.getElementById("show-all-btn");
+    if(phones.length > 6) showMoreBtn.classList.remove("hidden");
+    if(phones.length <= 6) showMoreBtn.classList.add("hidden");
+
 
     phones.forEach(phone =>{
         // console.log(phone);
@@ -50,7 +56,7 @@ const loadPhoneDetails = async (id) =>{
 
 //  Display phone details in modal
 const displayPhoneDetails = (phoneDetails) =>{
-    console.log(phoneDetails);
+    // console.log(phoneDetails);
 
     const phoneDetailsContainer = document.getElementById("phone-details-container");
     phoneDetailsContainer.innerHTML = `
@@ -96,7 +102,7 @@ const displayPhoneDetails = (phoneDetails) =>{
 
     // Connectivity components
     const connectivityContainer = phoneDetailsContainer.querySelector("#connectivity-container");
-    const components = phoneDetails.others;
+    const components = phoneDetails?.others;
     for(const component in components){
         // console.log(`${component}: ${components[component]}`);
         const componentList = document.createElement("li");
@@ -117,7 +123,7 @@ const searchPhone = () =>{
         alert("Plese give some input");
         loader(false);
     };
-    if(searchText !== '') loadPhoneData(searchText);
+    if(searchText !== '') loadPhoneData(searchText, );
     
     searchField.value = '';
 }
@@ -133,4 +139,7 @@ const loader = (isLoading) =>{
 }
 
 
-loadPhoneData("13");
+
+
+
+loadPhoneData("iphone");
