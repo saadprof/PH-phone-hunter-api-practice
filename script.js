@@ -66,9 +66,18 @@ const displayPhoneDetails = (phoneDetails) =>{
         <p class="text-lg font-bold">Display: <span class="text-normal font-normal">${phoneDetails.mainFeatures.displaySize ? phoneDetails.mainFeatures.displaySize : "Not Available"}</span></p>
         <p class="text-lg font-bold">Memory: <span class="text-normal font-normal">${phoneDetails.mainFeatures.memory ? phoneDetails.mainFeatures.memory : "Not Available"}</span></p>
         
+        <!--Sensors-->
         <div class="flex gap-8 my-2">
             <p class="text-lg font-bold">Sensors: </p>
             <ol id="sensor-container" class="list-disc text-normal font-normal">
+
+            </ol>
+        </div>
+
+        <!--Others-->
+        <div class="flex gap-8 my-2">
+            <p class="text-lg font-bold">Others: </p>
+            <ol id="connectivity-container" class="list-disc text-normal font-normal">
 
             </ol>
         </div>
@@ -82,6 +91,16 @@ const displayPhoneDetails = (phoneDetails) =>{
         sensorList.innerText = `${sensor}`;
         sensorContainer.appendChild(sensorList);
     });
+
+    // Connectivity components
+    const connectivityContainer = phoneDetailsContainer.querySelector("#connectivity-container");
+    const components = phoneDetails.others;
+    for(const component in components){
+        // console.log(`${component}: ${components[component]}`);
+        const componentList = document.createElement("li");
+        componentList.innerText = `${component}: ${components[component]}`;
+        connectivityContainer.appendChild(componentList)
+    }
 }
 
 loadPhoneData();
