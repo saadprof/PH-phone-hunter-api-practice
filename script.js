@@ -14,15 +14,17 @@ const displayPhoneData = (phones) =>{
     const phonesContainer = document.getElementById("phone-cards-container");
 
     phones.forEach(phone =>{
+        console.log(phone);
+
         const phoneDiv = document.createElement("div");
         phoneDiv.classList = 'bg-white drop-shadow-lg border';
 
         phoneDiv.innerHTML = `
         <div class="p-4">
             <div class="bg-pink-50 rounded-lg">
-                <img class="p-4 mx-auto" src="phn1.png" alt="" />
+                <img class="p-4 mx-auto rounded-lg" src="${phone.image}" alt="" />
             </div>
-            <h3 class="text-2xl text-pink-500 font-bold mt-3">Iphone 13 pro max</h3>
+            <h3 class="text-2xl text-pink-500 font-bold mt-3">${phone.phone_name}</h3>
             <p class="text-pink-400 my-2">
                 There are many variations of passages of available, but the
                 majority have suffered
