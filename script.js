@@ -103,4 +103,13 @@ const displayPhoneDetails = (phoneDetails) =>{
     }
 }
 
+
+
+//  Searching phones
+const searchPhone = () =>{
+    
+}
+
+
+
 loadPhoneData();
