@@ -29,7 +29,7 @@ const displayPhoneData = (phones) =>{
                 There are many variations of passages of available, but the
                 majority have suffered
             </p>
-            <div><button onclick="loadPhoneDetails()" class="btn bg-white border-pink-400 text-pink-500 font-bold">Show Details</button></div>
+            <div><button onclick="loadPhoneDetails(); my_modal.showModal()" class="btn bg-white border-pink-400 text-pink-500 font-bold">Show Details</button></div>
         </div>
         `;
         phonesContainer.appendChild(phoneDiv);
@@ -37,11 +37,17 @@ const displayPhoneData = (phones) =>{
 }
 
 
+
 //  Load phone details in modal
 const loadPhoneDetails = async () =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phone/apple_iphone_13_pro_max-11089`);
     const data = await res.json();
     const phoneDetails = data.data;
+    displayPhoneDetails(phoneDetails);
+}
+
+//  Display phone details in modal
+const displayPhoneDetails = async (phoneDetails) =>{
     console.log(phoneDetails);
 }
 
