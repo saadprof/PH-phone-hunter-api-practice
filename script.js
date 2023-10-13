@@ -14,7 +14,7 @@ const displayPhoneData = (phones) =>{
     const phonesContainer = document.getElementById("phone-cards-container");
 
     phones.forEach(phone =>{
-        console.log(phone);
+        // console.log(phone);
 
         const phoneDiv = document.createElement("div");
         phoneDiv.classList = 'bg-white drop-shadow-lg border';
@@ -29,11 +29,20 @@ const displayPhoneData = (phones) =>{
                 There are many variations of passages of available, but the
                 majority have suffered
             </p>
-            <div><button class="btn bg-white border-pink-400 text-pink-500 font-bold">Show Details</button></div>
+            <div><button onclick="loadPhoneDetails()" class="btn bg-white border-pink-400 text-pink-500 font-bold">Show Details</button></div>
         </div>
         `;
         phonesContainer.appendChild(phoneDiv);
     })
+}
+
+
+//  Load phone details in modal
+const loadPhoneDetails = async () =>{
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/apple_iphone_13_pro_max-11089`);
+    const data = await res.json();
+    const phoneDetails = data.data;
+    console.log(phoneDetails);
 }
 
 loadPhoneData();
