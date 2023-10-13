@@ -9,7 +9,11 @@ const loadPhoneData = async () =>{
 
 //  Display Data
 const displayPhoneData = (phones) =>{
-    console.log(phones);
+    // console.log(phones);
+
+    phones.forEach(phone =>{
+        console.log(phone);
+    })
 }
 
 loadPhoneData();
