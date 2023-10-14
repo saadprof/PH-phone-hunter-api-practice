@@ -15,9 +15,9 @@ const displayPhoneData = (phones) =>{
 
     
     // Part of show more button function
-    const showMoreBtn = document.getElementById("show-all-btn");
-    if(phones.length > 6) showMoreBtn.classList.remove("hidden");
-    if(phones.length <= 6) showMoreBtn.classList.add("hidden");
+    // const showMoreBtn = document.getElementById("show-all-btn");
+    // if(phones.length > 6) showMoreBtn.classList.remove("hidden");
+    // if(phones.length <= 6) showMoreBtn.classList.add("hidden");
 
 
     phones.forEach(phone =>{
@@ -113,7 +113,7 @@ const displayPhoneDetails = (phoneDetails) =>{
 
 
 
-//  Searching phones
+//  Searching phones by clicking button
 const searchPhone = () =>{
     const searchField = document.getElementById("search-text-field");
     const searchText = searchField.value;
@@ -128,6 +128,21 @@ const searchPhone = () =>{
     searchField.value = '';
 }
 
+const searchPhoneEnter = (event) =>{
+    if(event.key == "Enter"){
+        const searchField = document.getElementById("search-text-field");
+        const searchText = searchField.value;
+    
+        loader(true);
+        if(searchText === ''){
+            alert("Plese give some input");
+            loader(false);
+        };
+        if(searchText !== '') loadPhoneData(searchText, );
+        
+        searchField.value = '';
+    }
+}
 
 
 // Loading function
